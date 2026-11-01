@@ -1,0 +1,26 @@
+<Project>
+  <!-- Defaults: PluginPackage.props (import it first). -->
+  <!--
+    The PowerApps solution targets accept only plug-in assemblies as ProjectReference. They have no support for plug-in packages.
+    This target covers the gap: it builds each referenced package project and copies its nupkg to
+    pluginpackages/<UniqueName>/package/<UniqueName>.nupkg in the solution working folder.
+
+    Declare a package in the consuming project like a ProjectReference:
+      <PluginPackageReference Include="..\MyPlugins\MyPlugins.csproj" UniqueName="smp_MyPlugins" />
+    UniqueName must match the folder name below Declarations/pluginpackages.
+  -->
+  <Target Name="CopyPluginPackages" AfterTargets="ResolveProjectReferences" Condition="'@(PluginPackageReference)' != ''">
+    <!-- These projects are not ProjectReferences (see above), so they are not restored with the solution project. Restore them here. -->
+    <MSBuild Projects="@(PluginPackageReference)" Targets="Restore" Properties="Configuration=$(Configuration);MSBuildRestoreSessionId=$([System.Guid]::NewGuid())" />
+    <MSBuild Projects="@(PluginPackageReference)" Targets="Build" Properties="Configuration=$(Configuration)" />
+
+    <PropertyGroup>
+      <_PluginPackageMetadataRoot>$(MSBuildProjectDirectory)\obj\$(Configuration)\Metadata</_PluginPackageMetadataRoot>
+    </PropertyGroup>
+    <ItemGroup>
+      <_BuiltPluginPackage Include="%(PluginPackageReference.RootDir)%(PluginPackageReference.Directory)$(PluginPackageBinFolder)\$(Configuration)\*.nupkg" UniqueName="%(PluginPackageReference.UniqueName)" />
+    </ItemGroup>
+    <Error Condition="'@(_BuiltPluginPackage)' == ''" Text="No nupkg found for @(PluginPackageReference) in $(PluginPackageBinFolder)\$(Configuration)." />
+    <Copy SourceFiles="@(_BuiltPluginPackage)" DestinationFiles="@(_BuiltPluginPackage->'$(_PluginPackageMetadataRoot)\pluginpackages\%(UniqueName)\package\%(UniqueName).nupkg')" />
+  </Target>
+</Project>

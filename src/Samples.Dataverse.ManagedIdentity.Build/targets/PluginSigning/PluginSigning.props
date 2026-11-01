@@ -1,0 +1,16 @@
+<Project>
+  <!--
+    Signs a file with a certificate whose private key stays in Azure Key Vault (HSM).
+    The same target runs in local builds and in pipelines. The tool authenticates with
+    DefaultAzureCredential, so `az login` works locally and the AZURE_* variables work in CI.
+    The signing tool (SignUniversal.Cli, version in SignUniversalVersion) runs through `dotnet dnx`,
+    so consumers need no tool manifest. This requires the .NET 10 SDK or newer.
+    The identity needs the Key Vault roles "Key Vault Crypto User" and "Key Vault Certificate User".
+  -->
+  <PropertyGroup>
+    <SignPlugins Condition="'$(SignPlugins)' == ''">true</SignPlugins>
+    <SigningKeyVaultUrl Condition="'$(SigningKeyVaultUrl)' == ''">$(SIGNING_KEYVAULT_URL)</SigningKeyVaultUrl>
+    <SigningCertificateName Condition="'$(SigningCertificateName)' == ''">$(SIGNING_CERTIFICATE_NAME)</SigningCertificateName>
+    <SignUniversalVersion Condition="'$(SignUniversalVersion)' == ''">1.0.39</SignUniversalVersion>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PowerAppsTargetsPath>$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\PowerApps</PowerAppsTargetsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
+  <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Solution.props" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Solution.props')" />
+  <PropertyGroup>
+    <ProjectGuid>04cbd5e0-0c2a-43e7-be13-90f9ba5efb0d</ProjectGuid>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFramework>net462</TargetFramework>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <SolutionRootPath>Declarations</SolutionRootPath>
+    <SolutionPackageMapFilePath>$(MSBuildThisFileDirectory)map.xml</SolutionPackageMapFilePath>
+    <DefaultProjectTypeGuid>FAE04EC0-301F-11D3-BF4B-00C04F79EFBC</DefaultProjectTypeGuid>
+  </PropertyGroup>
+  <Import Project="$(PkgSamples_Dataverse_ManagedIdentity_Build)\targets\PluginPackage\PluginPackage.props" Condition="Exists('$(PkgSamples_Dataverse_ManagedIdentity_Build)\targets\PluginPackage\PluginPackage.props')" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.PowerApps.MSBuild.Solution" Version="1.*" />
+    <PackageReference Include="Samples.Dataverse.ManagedIdentity.Build" Version="1.3.0" PrivateAssets="All" GeneratePathProperty="true" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Samples.Dataverse.ManagedIdentity.Plugins.PluginAssemblyDemo\Samples.Dataverse.ManagedIdentity.Plugins.PluginAssemblyDemo.csproj" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+  <ItemGroup>
+    <PluginPackageReference Include="..\Samples.Dataverse.ManagedIdentity.Plugins.PluginPackageDemo\Samples.Dataverse.ManagedIdentity.Plugins.PluginPackageDemo.csproj" UniqueName="smp_Samples.Dataverse.ManagedIdentity.Plugins.PluginPackageDemo" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\.gitignore" />
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\bin\**" />
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\obj\**" />
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\*.cdsproj" />
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\*.cdsproj.user" />
+    <ExcludeDirectories Include="$(MSBuildThisFileDirectory)\*.sln" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)\**" Exclude="@(ExcludeDirectories)" />
+    <Content Include="$(SolutionPackageZipFilePath)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Solution.targets" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Solution.targets')" />
+  <Import Project="$(PkgSamples_Dataverse_ManagedIdentity_Build)\targets\PluginPackage\PluginPackage.targets" Condition="Exists('$(PkgSamples_Dataverse_ManagedIdentity_Build)\targets\PluginPackage\PluginPackage.targets')" />
+
+  <!-- SolutionPackager reads plain XML. Expand {Configuration} in map.xml so a Debug build packs the Debug assembly. -->
+  <Target Name="ExpandSolutionMap" BeforeTargets="ProcessCdsProjectReferencesOutputs;PowerAppsRefreshLoc;PowerAppsPackage">
+    <PropertyGroup>
+      <_ExpandedSolutionMap>$(MSBuildProjectDirectory)/obj/$(Configuration)/map.xml</_ExpandedSolutionMap>
+    </PropertyGroup>
+    <WriteLinesToFile File="$(_ExpandedSolutionMap)" Lines="$([System.IO.File]::ReadAllText('$(MSBuildThisFileDirectory)map.xml').Replace('{Configuration}', '$(Configuration)'))" Overwrite="true" />
+    <PropertyGroup>
+      <SolutionPackageMapFilePath>$(_ExpandedSolutionMap)</SolutionPackageMapFilePath>
+    </PropertyGroup>
+  </Target>
+
+  <!-- A solution project has no application to publish; its output is the solution zip. This replaces the ClickOnce Publish target, which fails here. -->
+  <Target Name="Publish" DependsOnTargets="Build" />
+</Project>

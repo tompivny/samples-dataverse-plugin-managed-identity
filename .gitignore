@@ -1,0 +1,104 @@
+# Build output (any depth)
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+artifacts/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# MSBuild binary and structured logs
+*.binlog
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Visual Studio / Rider / VS Code
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.DotSettings.user
+_ReSharper*/
+
+# NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+project.lock.json
+project.fragment.lock.json
+.nuget/
+*.nuget.props
+*.nuget.targets
+
+# Test results and coverage
+[Tt]est[Rr]esult*/
+*.trx
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+coverage*.info
+TestResults/
+
+# Debug symbols and compiled binaries not in bin/obj
+*.pdb
+*.dll
+*.exe
+*.cache
+*.ilk
+*.log
+
+# Publish output
+PublishScripts/
+*.pubxml
+*.pubxml.user
+*.publishproj
+
+# Generated files
+*.g.cs
+*.g.i.cs
+*_wpftmp.csproj
+.dotnet/
+.msCoverageSourceRootsMapping_*
+*.zip
+
+# Signing material
+cert/
+*.pfx
+*.p12
+*.key
+*.pem
+*.crt
+*.cer
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+tfplan
+*.tfvars
+!*.tfvars.example
+backend.hcl
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Local-state override for lab runs
+backend_override.tf
+infra/terraform/environments/dev/budget.tf

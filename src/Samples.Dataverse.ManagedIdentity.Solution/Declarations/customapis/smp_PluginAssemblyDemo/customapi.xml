@@ -1,0 +1,15 @@
+<customapi uniquename="smp_PluginAssemblyDemo">
+  <allowedcustomprocessingsteptype>2</allowedcustomprocessingsteptype>
+  <bindingtype>0</bindingtype>
+  <description default="Runs the PluginAssemblyDemo plug-in, which calls the sample function with the managed identity">
+    <label description="Runs the PluginAssemblyDemo plug-in, which calls the sample function with the managed identity" languagecode="1033" />
+  </description>
+  <displayname default="PluginAssemblyDemo">
+    <label description="PluginAssemblyDemo" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isfunction>0</isfunction>
+  <isprivate>0</isprivate>
+  <name>PluginAssemblyDemo</name>
+  <workflowsdkstepenabled>0</workflowsdkstepenabled>
+</customapi>

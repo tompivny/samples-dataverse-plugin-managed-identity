@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="Samples.Dataverse.ManagedIdentity.Plugins.PluginPackageDemo.SamplePlugin: smp_PluginPackageDemo" SdkMessageProcessingStepId="{8d14f6a2-7c39-4e85-b0a6-19e3c5d72f84}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageName>smp_PluginPackageDemo</SdkMessageName>
+  <PluginTypeName>Samples.Dataverse.ManagedIdentity.Plugins.PluginPackageDemo.SamplePlugin, Samples.Dataverse.ManagedIdentity.Plugins.PluginPackageDemo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</PluginTypeName>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Configuration>https://func-dvplugin-dev-pvn4x.azurewebsites.net/api/whoami|api://9998e2a1-4466-4197-9a4e-554da7c38dc0/.default</Configuration>
+  <Description>Samples.Dataverse.ManagedIdentity.Plugins.PluginPackageDemo.SamplePlugin: smp_PluginPackageDemo</Description>
+  <FilteringAttributes></FilteringAttributes>
+  <InvocationSource>0</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>40</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>

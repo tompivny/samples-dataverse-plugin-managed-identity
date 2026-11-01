@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- {Configuration} is expanded into obj/<Configuration>/map.xml by the ExpandSolutionMap target in the cdsproj. -->
+<Mapping>
+  <FileToFile map="PluginAssemblies/SamplesDataverseManagedIdentityPluginsPluginAssemblyDemo-F801DD37-FA67-45AB-B96A-C4E4206BE09B/Samples.Dataverse.ManagedIdentity.Plugins.PluginAssemblyDemo.dll"
+              to="../../../../Samples.Dataverse.ManagedIdentity.Plugins.PluginAssemblyDemo/bin/{Configuration}/net462/Samples.Dataverse.ManagedIdentity.Plugins.PluginAssemblyDemo.dll" />
+</Mapping>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<managedidentity managedidentityid="9d01f8c0-84c3-4d48-b430-ed8c6e64647e" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <applicationid>{e9a921f8-4add-469d-8b22-30ec39947629}</applicationid>
+  <credentialsource>2</credentialsource>
+  <identitytype>0</identitytype>
+  <iscustomizable>1</iscustomizable>
+  <name>smp-dataverse-plugin-uami</name>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <subjectscope>1</subjectscope>
+  <tenantid>{e9a921f8-4add-469d-8b22-30ec39947629}</tenantid>
+  <version>2</version>
+</managedidentity>

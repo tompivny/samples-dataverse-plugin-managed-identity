@@ -1,0 +1,15 @@
+<customapi uniquename="smp_PluginPackageDemo">
+  <allowedcustomprocessingsteptype>2</allowedcustomprocessingsteptype>
+  <bindingtype>0</bindingtype>
+  <description default="Runs the PluginPackageDemo plug-in, which calls the sample function with the managed identity">
+    <label description="Runs the PluginPackageDemo plug-in, which calls the sample function with the managed identity" languagecode="1033" />
+  </description>
+  <displayname default="PluginPackageDemo">
+    <label description="PluginPackageDemo" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isfunction>0</isfunction>
+  <isprivate>0</isprivate>
+  <name>PluginPackageDemo</name>
+  <workflowsdkstepenabled>0</workflowsdkstepenabled>
+</customapi>

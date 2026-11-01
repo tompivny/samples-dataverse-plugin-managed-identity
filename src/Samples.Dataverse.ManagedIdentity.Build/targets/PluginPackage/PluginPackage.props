@@ -1,0 +1,6 @@
+<Project>
+  <!-- Defaults for PluginPackage.targets. Set PluginPackageProject and PluginPackageDestination in the consuming project. -->
+  <PropertyGroup>
+    <PluginPackageBinFolder Condition="'$(PluginPackageBinFolder)' == ''">bin</PluginPackageBinFolder>
+  </PropertyGroup>
+</Project>

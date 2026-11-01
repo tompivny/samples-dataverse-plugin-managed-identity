@@ -1,0 +1,26 @@
+<Project>
+  <!-- Defaults and documentation: PluginSigning.props (import it first). -->
+
+  <!--
+    Opt in per project (set in the consuming csproj):
+      KeyVaultSignOutput  = true   signs the built assembly after it is copied to the output folder
+      KeyVaultSignPackage = true   signs the nupkg after Pack
+  -->
+  <Target Name="SignOutputWithKeyVault" AfterTargets="CopyFilesToOutputDirectory" Condition="'$(KeyVaultSignOutput)' == 'true'">
+    <MSBuild Projects="$(MSBuildProjectFullPath)" Targets="SignWithKeyVault" Properties="SigningFile=$([MSBuild]::NormalizePath($(MSBuildProjectDirectory), $(OutDir), $(TargetFileName)))" />
+  </Target>
+
+  <Target Name="SignPackageWithKeyVault" AfterTargets="Pack" Condition="'$(KeyVaultSignPackage)' == 'true'">
+    <ItemGroup>
+      <PackedNupkg Include="@(NuGetPackOutput)" Condition="'%(Extension)' == '.nupkg'" />
+    </ItemGroup>
+    <MSBuild Projects="$(MSBuildProjectFullPath)" Targets="SignWithKeyVault" Properties="SigningFile=%(PackedNupkg.FullPath)" Condition="'@(PackedNupkg)' != ''" />
+  </Target>
+
+  <!-- Input: SigningFile. Signs the file in place. A file that already carries a signature is skipped. -->
+  <Target Name="SignWithKeyVault" Condition="'$(SignPlugins)' == 'true' and '$(SigningFile)' != ''">
+    <Error Condition="'$(SigningKeyVaultUrl)' == '' or '$(SigningCertificateName)' == ''"
+            Text="Signing is enabled but SigningKeyVaultUrl and SigningCertificateName (or SIGNING_KEYVAULT_URL and SIGNING_CERTIFICATE_NAME) are not set. Use -p:SignPlugins=false to skip signing." />
+    <Exec Command="dotnet dnx --yes SignUniversal.Cli@$(SignUniversalVersion) -- sign &quot;$(SigningFile)&quot; --key-vault-url &quot;$(SigningKeyVaultUrl)&quot; --key-vault-certificate &quot;$(SigningCertificateName)&quot; --skip-signed" />
+  </Target>
+</Project>

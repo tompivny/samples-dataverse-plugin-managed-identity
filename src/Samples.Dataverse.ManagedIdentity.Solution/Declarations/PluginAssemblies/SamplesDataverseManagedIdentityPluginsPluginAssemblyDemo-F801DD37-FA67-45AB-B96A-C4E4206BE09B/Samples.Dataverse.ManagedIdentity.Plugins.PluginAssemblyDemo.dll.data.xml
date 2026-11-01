@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PluginAssembly FullName="Samples.Dataverse.ManagedIdentity.Plugins.PluginAssemblyDemo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=91ebbd1e5b59de06" PluginAssemblyId="f801dd37-fa67-45ab-b96a-c4e4206be09b" CustomizationLevel="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsolationMode>2</IsolationMode>
+  <SourceType>0</SourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <ManagedIdentityId>9d01f8c0-84c3-4d48-b430-ed8c6e64647e</ManagedIdentityId>
+  <FileName>/PluginAssemblies/SamplesDataverseManagedIdentityPluginsPluginAssemblyDemo-F801DD37-FA67-45AB-B96A-C4E4206BE09B/Samples.Dataverse.ManagedIdentity.Plugins.PluginAssemblyDemo.dll</FileName>
+  <PluginTypes>
+    <PluginType AssemblyQualifiedName="Samples.Dataverse.ManagedIdentity.Plugins.PluginAssemblyDemo.SamplePlugin, Samples.Dataverse.ManagedIdentity.Plugins.PluginAssemblyDemo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=91ebbd1e5b59de06" PluginTypeId="c81748ca-020e-4740-ab7a-ad8cb6dc0368" Name="Samples.Dataverse.ManagedIdentity.Plugins.PluginAssemblyDemo.SamplePlugin">
+      <FriendlyName>ea08a279-e63c-4bc7-a641-23373498ad7a</FriendlyName>
+    </PluginType>
+  </PluginTypes>
+</PluginAssembly>

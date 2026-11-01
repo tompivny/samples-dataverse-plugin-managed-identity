@@ -1,0 +1,18 @@
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+
+# Globally unique, 3-24 characters
+key_vault_name = "kv-dvplugin-dev-<unique>"
+
+# Globally unique names for the sample function app
+function_app_name             = "func-dvplugin-dev-<unique>"
+function_storage_account_name = "stdvplugindev<unique>"
+
+# Object IDs of the CI service principal(s) that sign
+signer_principal_ids = []
+
+# Set false only if you want to destroy and recreate the vault name freely
+purge_protection_enabled = true
+
+# Dataverse environment that runs the plug-in
+dataverse_environment_id = "00000000-0000-0000-0000-000000000000"

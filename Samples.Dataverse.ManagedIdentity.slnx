@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Samples.Dataverse.ManagedIdentity.AzureFunction/Samples.Dataverse.ManagedIdentity.AzureFunction.csproj" />
+    <Project Path="src/Samples.Dataverse.ManagedIdentity.Build/Samples.Dataverse.ManagedIdentity.Build.csproj" />
+    <Project Path="src/Samples.Dataverse.ManagedIdentity.Package/Samples.Dataverse.ManagedIdentity.Package.csproj" />
+    <Project Path="src/Samples.Dataverse.ManagedIdentity.Plugins.PluginAssemblyDemo/Samples.Dataverse.ManagedIdentity.Plugins.PluginAssemblyDemo.csproj" />
+    <Project Path="src/Samples.Dataverse.ManagedIdentity.Plugins.PluginPackageDemo/Samples.Dataverse.ManagedIdentity.Plugins.PluginPackageDemo.csproj" />
+    <Project Path="src/Samples.Dataverse.ManagedIdentity.Solution/Samples.Dataverse.ManagedIdentity.Solution.cdsproj" Type="C#">
+      <!-- The solution zip packs the signed outputs of these projects, so they must finish first. -->
+      <BuildDependency Project="src/Samples.Dataverse.ManagedIdentity.Plugins.PluginAssemblyDemo/Samples.Dataverse.ManagedIdentity.Plugins.PluginAssemblyDemo.csproj" />
+      <BuildDependency Project="src/Samples.Dataverse.ManagedIdentity.Plugins.PluginPackageDemo/Samples.Dataverse.ManagedIdentity.Plugins.PluginPackageDemo.csproj" />
+    </Project>
+  </Folder>
+</Solution>
