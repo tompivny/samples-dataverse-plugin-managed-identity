@@ -6,7 +6,7 @@ detail that breaks most pipelines: the managed identity's `applicationid` and `t
 differ in each environment, but a managed solution carries one fixed value.
 
 It complements the blog article
-[ALM of managed identities for Dataverse plug-ins](TODO-add-blog-url).
+[ALM of managed identities for Dataverse plug-ins](https://www.tompivny.com/posts/alm-of-managed-identities-for-dataverse-plug-ins/).
 The article explains the reasoning. This repo holds the working code.
 
 ```
